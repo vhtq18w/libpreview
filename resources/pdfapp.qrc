@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pdfapp/bundle.js</file>
+        <file>pdfapp/index.html</file>
+        <file>pdfapp/vendors~pdfjsWorker.bundle.js</file>
+    </qresource>
+</RCC>

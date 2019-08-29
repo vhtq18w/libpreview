@@ -1,0 +1,3 @@
+[submodule "libpdfthumbnail"]
+	path = libpdfthumbnail
+	url = https://github.com/vHtQ18W/libpdfthumbnail.git

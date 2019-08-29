@@ -1,0 +1,11 @@
+# qt file
+*.pro.user
+
+# build directory
+build/
+
+# clangd complete file
+compile_commands.json
+
+# IDE directory
+.idea/
