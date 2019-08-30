@@ -96,8 +96,7 @@ PdfAppBridge::establishWebChannel() {
   if (ptr_page != nullptr) {
     ptr_page->setWebChannel(m_ptr_webChannel);
     m_ptr_webChannel->registerObject(QStringLiteral("pdfAppBridge"), m_ptr_pdfBridgeObject);
-    ptr_page->runJavaScript("pdfInitialize();");
-  }
+    ptr_page->runJavaScript("pdfAppInitialize();");  }
 }
 
 ////////////////////////////////////

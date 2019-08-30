@@ -1,4 +1,3 @@
-#include <QDebug>
 #include <QFile>
 #include <QFileInfo>
 #include <QVBoxLayout>
@@ -37,6 +36,7 @@ PdfAppWidget::PdfAppWidget(QWidget *ptr_parent)
   m_ptr_pdfAppWidgetPrivate->status = false;
   QUrl url = QUrl::fromUserInput(pdfPreviewAppUrl);
   auto ptr_layout = new QVBoxLayout();
+  m_ptr_pdfAppWidgetPrivate->ptr_pdfAppBridge->setUrl(url);
   ptr_layout->setMargin(0);
   ptr_layout->addWidget(m_ptr_pdfAppWidgetPrivate->ptr_pdfAppBridge);
   setLayout(ptr_layout);
@@ -99,8 +99,9 @@ PdfAppWidget::onLoadFinished(bool status) {
 void
 PdfAppWidget::renderPdfData() {
   if (m_ptr_pdfAppWidgetPrivate->status) {
-    QString script = QString("previewPdfFromFileData('%1')")
-      .arg(QString::fromUtf8(m_ptr_pdfAppWidgetPrivate->pdfData));
+    QString script = QString("previewPdfFromFileData('%1');")
+      .arg(QString::fromUtf8(m_ptr_pdfAppWidgetPrivate->pdfData.toBase64()));
+    qDebug() << m_ptr_pdfAppWidgetPrivate->pdfData.toBase64();
     m_ptr_pdfAppWidgetPrivate->ptr_pdfAppBridge->invokeJavaScript(script);
     m_ptr_pdfAppWidgetPrivate->pdfData.clear();
   }
@@ -110,9 +111,10 @@ PdfAppWidget::renderPdfData() {
 void
 PdfAppWidget::renderPdfFile() {
   if (m_ptr_pdfAppWidgetPrivate->status) {
-    QString script = QString("previewPdfFromFile('file://%1')")
-      .arg(m_ptr_pdfAppWidgetPrivate->pdfFile);
-    m_ptr_pdfAppWidgetPrivate->ptr_pdfAppBridge->invokeJavaScript(script);
+    // QString script = QString("previewPdfFromFile('file://%1');")
+    //   .arg(m_ptr_pdfAppWidgetPrivate->pdfFile);
+    // m_ptr_pdfAppWidgetPrivate->ptr_pdfAppBridge->invokeJavaScript(script);
+    renderPdfData();
     m_ptr_pdfAppWidgetPrivate->pdfData.clear();
   }
 }

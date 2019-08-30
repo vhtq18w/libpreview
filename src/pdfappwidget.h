@@ -3,6 +3,10 @@
 
 #include <QWidget>
 
+namespace LibPreview {
+class PdfAppWidget;
+}
+
 struct PdfAppWidgetPrivate;
 
 class PdfAppWidget : public QWidget {
@@ -22,7 +26,7 @@ private slots:
   void onRenderPdfFinished();
   
 public:
-  PdfAppWidget(QWidget *ptr_parent);
+  PdfAppWidget(QWidget *ptr_parent = nullptr);
 
   ~PdfAppWidget();
 
