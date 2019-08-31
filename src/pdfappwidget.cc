@@ -17,6 +17,10 @@ struct PdfAppWidgetPrivate {
   QString pdfFile;
 };
 
+/////////////////////////////////
+// PdfAppWidget implementation //
+/////////////////////////////////
+
 PdfAppWidget::PdfAppWidget(QWidget *ptr_parent)
     : QWidget(ptr_parent) {
   m_ptr_pdfAppWidgetPrivate = new PdfAppWidgetPrivate;
