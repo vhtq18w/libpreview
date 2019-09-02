@@ -72,6 +72,7 @@ PdfAppBridge::close() {
 void
 PdfAppBridge::jsInitialized() {
   // App web view have initialized.
+  qDebug() << "init success";
 }
 
 void
