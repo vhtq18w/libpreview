@@ -3,22 +3,26 @@
 This project is order to provide document preview feature for peony-qt.
 
 * Build
+** Preparations
++ qt5-webengine
++ qt5-webchannel
++ nodejs
 ** Download sources
 Clone this repo and fetch submodule.
 #+begin_src bash
-git clone --recursive git@github.com:vHtQ18W/libpreview.git
+git clone --recursive https://github.com/vHtQ18W/libpreview.git
 #+end_src
 ** Build js dependence
 Build js library and copy it to resources directory.
 #+begin_src bash
 cd libpdfthumbnail
-yarn # or use `npm install'
-yarn build # or use `npm run build'
-cp libpdfthumbnail/dist resources/pdfapp
+npm install
+npm run build
+cp -rf libpdfthumbnail/dist resources/pdfapp
 #+end_src
 ** Build
 Build c++ library. You can choose =qmake= or =cmake= build this project
-   according to your preference.
+according to your preference.
 #+begin_src bash
 mkdir build && cd build
 cmake .. # or use `qmake ..'
