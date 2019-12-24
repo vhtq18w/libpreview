@@ -7,6 +7,12 @@
 
 #include "pdf-thumbnail.h"
 
+QT_BEGIN_NAMESPACE
+extern Q_WIDGETS_EXPORT void qt_blurImage(QPainter *p, qreal radius,
+                                          bool quality, bool alphaOnly,
+                                          int transposed = 0);
+QT_END_NAMESPACE
+
 class Shadow : public QGraphicsEffect {
   Q_OBJECT
 public:
@@ -38,12 +44,6 @@ private:
   qreal _blurRadius;
   QColor _color;
 };
-
-QT_BEGIN_NAMESPACE
-extern Q_WIDGETS_EXPORT void qt_blurImage(QPainter *p, qreal radius,
-                                          bool quality, bool alphaOnly,
-                                          int transposed = 0);
-QT_END_NAMESPACE
 
 Shadow::Shadow(QObject *parent)
     : QGraphicsEffect(parent), _distance(4.0f), _blurRadius(10.0f),
